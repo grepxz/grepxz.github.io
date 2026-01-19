@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hanna Nyzhnia — Cybersecurity Professional</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.37/build/spline-viewer.js"></script>
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#cacaca;
+      --line:#ffffff;
+      --img:#b8b8b8;
+      --bg:#118;
+
+      --pad: clamp(18px, 4vw, 56px);
+      --gap: clamp(14px, 2.2vw, 28px);
+      --gap-sm: clamp(10px, 1.6vw, 18px);
+
+      --bar-h: 18px;
+      --bar-h-sm: 14px;
+      --border: 2px solid #3a3a3a;
+      --radius: 2px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    /* Video background */
+    .video-bg{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+      filter: brightness(0.65);
+    }
+    body{
+      margin:0;
+      background: transparent;
+      color:var(--muted);
+      font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ===== Spread (two "pages") ===== */
+    .spread{
+      height:100vh;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      overflow:hidden;
+    }
+    .page{
+      padding: var(--pad);
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+
+    /* ===== Headline + long divider ===== */
+    .page__head{
+      display:flex;
+      align-items:center;
+      gap: var(--gap);
+    }
+    .kicker{
+      margin:0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 12px; /* smaller headers */
+      letter-spacing: .08em;
+      font-weight: 600;
+      color: #f5f5f0;
+    }
+    .divider{
+      height: 1px;
+      background: var(--muted);
+      width: 100%;
+    }
+    .page__head .divider{ flex:1; }
+
+    /* ===== Utility blocks ===== */
+    .img{
+      background: var(--img);
+      border: none;
+    }
+    .img--tall{ width: 180px; height: 240px; }
+    .img--square{ aspect-ratio: 1 / 1; width:100%; }
+
+    .spline-container{
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border: none;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .spline-container spline-viewer{
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .bar{
+      height: var(--bar-h);
+      background: transparent;
+      border-radius: var(--radius);
+      width: var(--w, 100%);
+
+      /* show mock text inside instead of empty rectangles */
+      display:flex;
+      align-items:center;
+      padding: 0 10px;
+      color:#f5f5f0;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .bar--sm{
+      height: var(--bar-h-sm);
+      font-size: 10px;
+    }
+    .bar:empty::before{ content:"mock text"; }
+    .bar--sm:empty::before{ content:"mock"; }
+
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .title{
+      margin:0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 500;
+      color: #f5f5f0;
+      line-height: 1.05;
+    }
+    .title--xl{ font-size: clamp(20px, 2vw, 26px); } /* smaller headers */
+    .title--lg{ font-size: clamp(18px, 1.8vw, 24px); }
+    .title--md{ font-size: clamp(14px, 1.3vw, 18px); }
+    h3.title{ font-size: clamp(14px, 1.4vw, 18px); padding-bottom:8px ;}
+
+    .num{
+      display:block;
+      margin-top: 2px;
+      font-size: .9em;
+      color: #f5f5f0;
+    }
+
+    .muted-p{
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #f5f5f0;
+      max-width: 44ch;
+    }
+
+    /* Rotated-text indicator (black vertical rectangle) */
+    .rotated-tag{
+      width: 22px;
+      min-height: 100%;
+      background: none;
+      color:#f5f5f0;
+      border-radius: var(--radius);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 0;
+    }
+    .rotated-tag > span{
+      transform: rotate(90deg);
+      white-space:nowrap;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .lower-grid > .rotated-tag,
+    .upper-right > .rotated-tag{
+      writing-mode: vertical-rl;
+    }
+    .lower-grid > .rotated-tag > span,
+    .upper-right > .rotated-tag > span{
+      transform: none;
+      text-transform: none;
+    }
+    .tall-bar .tall-bar__label{
+      writing-mode: vertical-rl;
+    }
+    .tall-bar .tall-bar__label span{
+      
+      text-transform: none;
+    }
+
+    /* ===== LEFT PAGE LAYOUT ===== */
+    .left-grid{
+      display:grid;
+      grid-template-columns: 1fr 2fr; /* left column + right column(2x) */
+      gap: var(--gap);
+      align-items:stretch;
+      flex: 1;
+    }
+
+    .leftcol{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+    .leftcol > .divider:last-child{
+      margin-top: auto;
+    }
+
+    .leftcol .section,
+    .rightcol .section{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .rightcol{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+    /* .rightcol > .lower-grid{
+      margin-top: auto;
+    } */
+
+    /* upper half: two columns */
+    .upper-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      align-items:start;
+    }
+    .upper-right{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--gap-sm);
+      align-items:start;
+    }
+
+    /* lower half: big image + text + rotated bar */
+    .lower-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr auto;
+      gap: var(--gap);
+      align-items:stretch;
+    }
+    .figure{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .lower-grid > .figure,
+    .lower-grid > .section{
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ===== RIGHT PAGE LAYOUT ===== */
+    .right-page{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+
+      /* fill remaining space so last divider can sit at bottom */
+      flex: 1;
+    }
+
+    .spacer{
+      min-height: clamp(40px, 8vw, 140px); /* empty middle section like the wireframe */
+    }
+
+    /* “info” area: 9-column grid; components span 3 columns each */
+    .info-grid{
+      display:grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: var(--gap);
+      align-items:start;
+    }
+    .info-a{ grid-column: 1 / span 3; }
+    .info-b{ grid-column: 4 / span 3; }
+    .info-c{ grid-column: 7 / span 3; }
+
+    .tall-bar{
+      height: clamp(220px, 28vw, 320px);
+      width: min(140px, 100%);
+      background: transparent;
+      border-radius: var(--radius);
+      justify-self:end;
+      position: relative;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .tall-bar .tall-bar__label{
+      position:relative;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .tall-bar .tall-bar__label span{
+      
+      color:#f5f5f0;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+
+    /* ===== Dividers inside sections ===== */
+    .rule{ margin: 0; }
+    .rule--tight{ margin-top: 6px; }
+
+    /* bottom-align the last divider on the right page */
+    section[aria-label="Colophon page"] .right-page > .divider.rule:last-child{
+      margin-top: auto;
+    }
+
+    /* ===== Responsiveness ===== */
+    @media (max-width: 980px){
+      .spread{ grid-template-columns: 1fr; height:auto; overflow:auto; }
+    }
+
+    @media (max-width: 740px){
+      .left-grid{ grid-template-columns: 1fr; }
+      .upper-grid{ grid-template-columns: 1fr; }
+      .upper-right{ grid-template-columns: 1fr auto; }
+      .lower-grid{ grid-template-columns: 1fr auto; }
+      .lower-grid > .figure{ grid-column: 1 / -1; }
+      .lower-grid > article:first-child{ grid-column: 1 / -1; }
+
+      /* Photo and Specialty side by side */
+      .leftcol{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+      }
+      .leftcol > .img--tall{ grid-row: 1; grid-column: 1; }
+      .leftcol > .section:first-of-type{ grid-row: 1; grid-column: 2; }
+      .leftcol > .divider:first-of-type{ grid-column: 1 / -1; }
+      .leftcol > .section:last-of-type{ grid-column: 1 / -1; justify-self: start; text-align: left; gap : 8 px; }
+      .leftcol > .divider:last-of-type{ grid-column: 1 / -1; }
+
+      .rotated-tag{
+        width: 22px;
+        min-height: 100px;
+        padding: 6px 0;
+      }
+      .rotated-tag > span{
+        font-size: 9px;
+      }
+
+      /* Cloud services styled like download resume */
+      .lower-grid > .rotated-tag{
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        writing-mode: vertical-rl;
+      }
+      .lower-grid > .rotated-tag > span{
+        transform: none;
+        white-space: nowrap;
+      }
+
+      .info-grid{
+        grid-template-columns: 1fr 1fr auto;
+        align-items: stretch;
+      }
+      .info-a{ grid-column: 1; }
+      .info-b{ grid-column: 2; }
+      .info-c{ grid-column: 3; display: flex; align-items: stretch; }
+      .tall-bar{ width: 22px; height: auto; min-height: 100%; justify-self: end; }
+      .tall-bar .tall-bar__label{ position: static; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; }
+      .tall-bar .tall-bar__label span{  white-space: nowrap; }
+
+      .img--tall{ width: 120px; height: 160px; }
+    }
+  </style>
+</head>
+
+<body>
+  <video muted playsinline class="video-bg" id="bgVideoA" poster="video/bg-poster.jpg"></video>
+  <video muted playsinline class="video-bg" id="bgVideoB" poster="video/bg-poster.jpg" style="opacity:0;"></video>
+  <script>
+    (function() {
+      var videoA = document.getElementById('bgVideoA');
+      var videoB = document.getElementById('bgVideoB');
+      var width = window.innerWidth;
+      var size = width > 980 ? 'desktop' : width > 740 ? 'tablet' : 'mobile';
+      var canPlayWebm = videoA.canPlayType('video/webm; codecs="vp9"');
+      var ext = canPlayWebm ? 'webm' : 'mp4';
+
+      var fwdSrc = 'video/bg-' + size + '.' + ext;
+      var revSrc = 'video/bg-' + size + '-rev.' + ext;
+
+      videoA.src = fwdSrc;
+      videoB.src = revSrc;
+
+      var activeVideo = videoA;
+      var nextVideo = videoB;
+
+      function crossfade() {
+        nextVideo.currentTime = 0;
+        nextVideo.play();
+        nextVideo.style.opacity = '1';
+        activeVideo.style.opacity = '0';
+
+        var temp = activeVideo;
+        activeVideo = nextVideo;
+        nextVideo = temp;
+      }
+
+      videoA.addEventListener('ended', crossfade);
+      videoB.addEventListener('ended', crossfade);
+
+      videoA.play();
+    })();
+  </script>
+  <script>
+    const interval = setInterval(() => {
+      const viewer = document.querySelector('spline-viewer');
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.querySelector('#logo');
+        if (logo) {
+          logo.remove();
+          clearInterval(interval);
+        }
+      }
+    }, 500);
+  </script>
+  <main class="spread">
+    <!-- ================= LEFT PAGE ================= -->
+    <section class="page" aria-label="About page">
+      <header class="page__head">
+        <h1 class="kicker">HANNA NYZHNIA</h1>
+
+      </header>
+      <div class="divider"></div>
+
+      <div class="left-grid">
+        <!-- Left column -->
+        <aside class="leftcol">
+          <div class="img img--tall" role="img" aria-label="Hanna Nyzhnia" style="background-image: url('IMG_1513.jpg'); background-size: cover; background-position: center;"></div>
+
+          <div class="section">
+            <h3 class="title title--xl">
+              Specialty
+            </h3>
+            
+            <p class="muted-p">Network</p>
+            <p class="muted-p">Cloud</p>
+            
+          </div>
+
+          <div class="divider rule"></div>
+
+          <div class="section">
+            <h3 class="title title--xl">Personal Projects</h3>
+            
+            <div class="stack" aria-label="Projects list">
+              <p class="muted-p">Web Pentest Lab</p>
+              
+              <p class="muted-p">AI Threat Hunting Tool</p>
+              <p class="muted-p">Hacking Cheat Sheet</p>
+              <p class="muted-p">OSINT DB</p>
+              <p class="muted-p">Digital Forensics Tool</p>
+              <p class="muted-p">Vulnerability Scanner</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </aside>
+
+        <!-- Right column (2x) -->
+        <div class="rightcol">
+          <!-- Upper half -->
+          <div class="upper-grid">
+            <div class="section">
+              <h3 class="title title--xl">Shh... Quiet,the machines are learning</h3>
+              <div class="divider rule"></div>
+            </div>
+
+            <div class="upper-right">
+              <div class="spline-container">
+                <spline-viewer url="https://prod.spline.design/SFbMZ2Iyc9VyYX0G/scene.splinecode"></spline-viewer>
+              </div>
+              <div class="rotated-tag" aria-label="Cybersecurity">
+                <span>サイバーセキュリティ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider rule"></div>
+
+          <!-- About section -->
+          <div class="section">
+            <h3 class="title title--xl">
+              Hello,I'm Hanna
+            </h3>
+          </div>
+
+          <div class="divider rule"></div>
+
+          <!-- Lower half -->
+          <div class="lower-grid">
+            <article class="section" aria-label="About content">
+              <p class="muted-p">
+                Dedicated cybersecurity professional with 4+ years of experience and Master of Science degree in Cybersecurity.
+              </p>
+              <p class="muted-p">
+                Strong foundation in programming languages, vulnerability assessment, security audit, penetration testing and network security.
+              </p>
+            </article>
+
+            <article class="section" aria-label="About content">
+              <p class="muted-p">
+                Proficient in Unix systems and various programming languages including JavaScript, Python, Bash, PowerShell, C#, and T-SQL.
+              </p>
+              <p class="muted-p">
+                Experienced with cloud platforms (AWS, Azure, GCP), containerization (Docker, Kubernetes), and security tools (Burp Suite, Metasploit, Nmap, Wireshark, Splunk).
+              </p>
+            </article>
+
+            <div class="rotated-tag" aria-label="Cloud Services">
+              <span>クラウドサービス</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RIGHT PAGE ================= -->
+    <section class="page" aria-label="Skills page">
+      <header class="page__head">
+        <h1 class="kicker">SKILLS</h1>
+
+      </header>
+      <div class="divider"></div>
+
+      <!-- Blog section -->
+      <div class="section">
+        <h3 class="title title--xl"><a href="https://blog.nyzhnia.com" style="color: #f5f5f0; text-decoration: none;">Blog</a></h3>
+        
+        <p class="muted-p">Duck checkpoint — Debugging tech and cyber, one quack at a time</p>
+      </div>
+
+      <div class="divider rule"></div>
+
+      <!-- info section -->
+      <section class="right-page" aria-label="Skills section">
+        <div class="info-grid">
+          <!-- list A: Security Skills -->
+          <div class="info-a">
+            <div class="stack" aria-label="Security skills">
+              <p class="muted-p" style="font-weight: 600;">Network & Security</p>
+              <p class="muted-p">Firewall, IDS/IPS, VPN</p>
+              <p class="muted-p">Penetration Testing</p>
+              <p class="muted-p">Vulnerability Assessment</p>
+              <p class="muted-p">SSL/TLS, SSH</p>
+              <p class="muted-p">Cloud Security</p>
+              <p class="muted-p">SIEM, Threat Hunting</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">Compliance</p>
+              <p class="muted-p">PCI DSS, HIPAA</p>
+              <p class="muted-p">ISO 27001, NIST</p>
+            </div>
+          </div>
+
+          <!-- list B: Dev Skills -->
+          <div class="info-b">
+            <div class="stack" aria-label="Development skills">
+              <p class="muted-p" style="font-weight: 600;">Programming</p>
+              <p class="muted-p">JavaScript, Python</p>
+              <p class="muted-p">Bash, PowerShell</p>
+              <p class="muted-p">C#, T-SQL</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">DevSecOps & Cloud</p>
+              <p class="muted-p">AWS, Azure, GCP</p>
+              <p class="muted-p">Docker, Kubernetes</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">Tools</p>
+              <p class="muted-p">Burp Suite, Metasploit</p>
+              <p class="muted-p">Nmap, Wireshark, Splunk</p>
+            </div>
+          </div>
+
+          <!-- Rotated label -->
+          <div class="info-c">
+            <div class="tall-bar" >
+              <div class="tall-bar__label"><span>ネットワーク</span></div>
+            </div>
+          </div>
+        </div>
+
+        
+      </section><div class="divider rule"></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    function splitChars(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      const words = text.split(/(\s+)/);
+      words.forEach(segment => {
+        if (/^\s+$/.test(segment)) {
+          el.appendChild(document.createTextNode(' '));
+        } else {
+          const wordWrap = document.createElement('span');
+          wordWrap.className = 'word-wrap';
+          [...segment].forEach(char => {
+            const span = document.createElement('span');
+            span.className = 'split-char';
+            span.textContent = char;
+            wordWrap.appendChild(span);
+          });
+          el.appendChild(wordWrap);
+        }
+      });
+      return el.querySelectorAll('.split-char');
+    }
+
+    function splitWords(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      text.split(/\s+/).forEach((word, i, arr) => {
+        const span = document.createElement('span');
+        span.className = 'split-word';
+        span.textContent = word;
+        el.appendChild(span);
+        if (i < arr.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+      return el.querySelectorAll('.split-word');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const style = document.createElement('style');
+      style.textContent = '.word-wrap { display: inline-block; white-space: nowrap; } .split-char, .split-word { display: inline-block; }';
+      document.head.appendChild(style);
+
+      document.querySelectorAll('.kicker').forEach((el, i) => {
+        const chars = splitChars(el);
+        gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power2.out', delay: 0.2 + i * 0.3 });
+      });
+
+      document.querySelectorAll('.title').forEach((el, i) => {
+        const link = el.querySelector('a');
+        if (link) {
+          const chars = splitChars(link);
+          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
+        } else {
+          const chars = splitChars(el);
+          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
+        }
+      });
+
+      document.querySelectorAll('.muted-p').forEach((el, i) => {
+        const words = splitWords(el);
+        gsap.fromTo(words, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03, ease: 'power2.out', delay: 0.6 + i * 0.04 });
+      });
+    });
+  </script>
+</body>
+</html>
