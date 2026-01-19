@@ -1,714 +1,675 @@
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Hanna Nyzhnia</title><style>
-/* cspell:disable-file */
-/* webkit printing magic: print all background colors */
-html {
-	-webkit-print-color-adjust: exact;
-}
-* {
-	box-sizing: border-box;
-	-webkit-print-color-adjust: exact;
-}
-
-html,
-body {
-	margin: 0;
-	padding: 0;
-}
-@media only screen {
-	body {
-		margin: 2em auto;
-		max-width: 900px;
-		color: rgb(55, 53, 47);
-	}
-}
-
-body {
-	line-height: 1.5;
-	white-space: pre-wrap;
-}
-
-a,
-a.visited {
-	color: inherit;
-	text-decoration: underline;
-}
-
-.pdf-relative-link-path {
-	font-size: 80%;
-	color: #444;
-}
-
-h1,
-h2,
-h3 {
-	letter-spacing: -0.01em;
-	line-height: 1.2;
-	font-weight: 600;
-	margin-bottom: 0;
-}
-
-.page-title {
-	font-size: 2.5rem;
-	font-weight: 700;
-	margin-top: 0;
-	margin-bottom: 0.75em;
-}
-
-h1 {
-	font-size: 1.875rem;
-	margin-top: 1.875rem;
-}
-
-h2 {
-	font-size: 1.5rem;
-	margin-top: 1.5rem;
-}
-
-h3 {
-	font-size: 1.25rem;
-	margin-top: 1.25rem;
-}
-
-.source {
-	border: 1px solid #ddd;
-	border-radius: 3px;
-	padding: 1.5em;
-	word-break: break-all;
-}
-
-.callout {
-	border-radius: 3px;
-	padding: 1rem;
-}
-
-figure {
-	margin: 1.25em 0;
-	page-break-inside: avoid;
-}
-
-figcaption {
-	opacity: 0.5;
-	font-size: 85%;
-	margin-top: 0.5em;
-}
-
-mark {
-	background-color: transparent;
-}
-
-.indented {
-	padding-left: 1.5em;
-}
-
-hr {
-	background: transparent;
-	display: block;
-	width: 100%;
-	height: 1px;
-	visibility: visible;
-	border: none;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
-}
-
-img {
-	max-width: 100%;
-}
-
-@media only print {
-	img {
-		max-height: 100vh;
-		object-fit: contain;
-	}
-}
-
-@page {
-	margin: 1in;
-}
-
-.collection-content {
-	font-size: 0.875rem;
-}
-
-.column-list {
-	display: flex;
-	justify-content: space-between;
-}
-
-.column {
-	padding: 0 1em;
-}
-
-.column:first-child {
-	padding-left: 0;
-}
-
-.column:last-child {
-	padding-right: 0;
-}
-
-.table_of_contents-item {
-	display: block;
-	font-size: 0.875rem;
-	line-height: 1.3;
-	padding: 0.125rem;
-}
-
-.table_of_contents-indent-1 {
-	margin-left: 1.5rem;
-}
-
-.table_of_contents-indent-2 {
-	margin-left: 3rem;
-}
-
-.table_of_contents-indent-3 {
-	margin-left: 4.5rem;
-}
-
-.table_of_contents-link {
-	text-decoration: none;
-	opacity: 0.7;
-	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
-}
-
-table,
-th,
-td {
-	border: 1px solid rgba(55, 53, 47, 0.09);
-	border-collapse: collapse;
-}
-
-table {
-	border-left: none;
-	border-right: none;
-}
-
-th,
-td {
-	font-weight: normal;
-	padding: 0.25em 0.5em;
-	line-height: 1.5;
-	min-height: 1.5em;
-	text-align: left;
-}
-
-th {
-	color: rgba(55, 53, 47, 0.6);
-}
-
-ol,
-ul {
-	margin: 0;
-	margin-block-start: 0.6em;
-	margin-block-end: 0.6em;
-}
-
-li > ol:first-child,
-li > ul:first-child {
-	margin-block-start: 0.6em;
-}
-
-ul > li {
-	list-style: disc;
-}
-
-ul.to-do-list {
-	padding-inline-start: 0;
-}
-
-ul.to-do-list > li {
-	list-style: none;
-}
-
-.to-do-children-checked {
-	text-decoration: line-through;
-	opacity: 0.375;
-}
-
-ul.toggle > li {
-	list-style: none;
-}
-
-ul {
-	padding-inline-start: 1.7em;
-}
-
-ul > li {
-	padding-left: 0.1em;
-}
-
-ol {
-	padding-inline-start: 1.6em;
-}
-
-ol > li {
-	padding-left: 0.2em;
-}
-
-.mono ol {
-	padding-inline-start: 2em;
-}
-
-.mono ol > li {
-	text-indent: -0.4em;
-}
-
-.toggle {
-	padding-inline-start: 0em;
-	list-style-type: none;
-}
-
-/* Indent toggle children */
-.toggle > li > details {
-	padding-left: 1.7em;
-}
-
-.toggle > li > details > summary {
-	margin-left: -1.1em;
-}
-
-.selected-value {
-	display: inline-block;
-	padding: 0 0.5em;
-	background: rgba(206, 205, 202, 0.5);
-	border-radius: 3px;
-	margin-right: 0.5em;
-	margin-top: 0.3em;
-	margin-bottom: 0.3em;
-	white-space: nowrap;
-}
-
-.collection-title {
-	display: inline-block;
-	margin-right: 1em;
-}
-
-.page-description {
-    margin-bottom: 2em;
-}
-
-.simple-table {
-	margin-top: 1em;
-	font-size: 0.875rem;
-	empty-cells: show;
-}
-.simple-table td {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table th {
-	height: 29px;
-	min-width: 120px;
-}
-
-.simple-table-header-color {
-	background: rgb(247, 246, 243);
-	color: black;
-}
-.simple-table-header {
-	font-weight: 500;
-}
-
-time {
-	opacity: 0.5;
-}
-
-.icon {
-	display: inline-block;
-	max-width: 1.2em;
-	max-height: 1.2em;
-	text-decoration: none;
-	vertical-align: text-bottom;
-	margin-right: 0.5em;
-}
-
-img.icon {
-	border-radius: 3px;
-}
-
-.user-icon {
-	width: 1.5em;
-	height: 1.5em;
-	border-radius: 100%;
-	margin-right: 0.5rem;
-}
-
-.user-icon-inner {
-	font-size: 0.8em;
-}
-
-.text-icon {
-	border: 1px solid #000;
-	text-align: center;
-}
-
-.page-cover-image {
-	display: block;
-	object-fit: cover;
-	width: 100%;
-	max-height: 30vh;
-}
-
-.page-header-icon {
-	font-size: 3rem;
-	margin-bottom: 1rem;
-}
-
-.page-header-icon-with-cover {
-	margin-top: -0.72em;
-	margin-left: 0.07em;
-}
-
-.page-header-icon img {
-	border-radius: 3px;
-}
-
-.link-to-page {
-	margin: 1em 0;
-	padding: 0;
-	border: none;
-	font-weight: 500;
-}
-
-p > .user {
-	opacity: 0.5;
-}
-
-td > .user,
-td > time {
-	white-space: nowrap;
-}
-
-input[type="checkbox"] {
-	transform: scale(1.5);
-	margin-right: 0.6em;
-	vertical-align: middle;
-}
-
-p {
-	margin-top: 0.5em;
-	margin-bottom: 0.5em;
-}
-
-.image {
-	border: none;
-	margin: 1.5em 0;
-	padding: 0;
-	border-radius: 0;
-	text-align: center;
-}
-
-.code,
-code {
-	background: rgba(135, 131, 120, 0.15);
-	border-radius: 3px;
-	padding: 0.2em 0.4em;
-	border-radius: 3px;
-	font-size: 85%;
-	tab-size: 2;
-}
-
-code {
-	color: #eb5757;
-}
-
-.code {
-	padding: 1.5em 1em;
-}
-
-.code-wrap {
-	white-space: pre-wrap;
-	word-break: break-all;
-}
-
-.code > code {
-	background: none;
-	padding: 0;
-	font-size: 100%;
-	color: inherit;
-}
-
-blockquote {
-	font-size: 1.25em;
-	margin: 1em 0;
-	padding-left: 1em;
-	border-left: 3px solid rgb(55, 53, 47);
-}
-
-.bookmark {
-	text-decoration: none;
-	max-height: 8em;
-	padding: 0;
-	display: flex;
-	width: 100%;
-	align-items: stretch;
-}
-
-.bookmark-title {
-	font-size: 0.85em;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	height: 1.75em;
-	white-space: nowrap;
-}
-
-.bookmark-text {
-	display: flex;
-	flex-direction: column;
-}
-
-.bookmark-info {
-	flex: 4 1 180px;
-	padding: 12px 14px 14px;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
-.bookmark-image {
-	width: 33%;
-	flex: 1 1 180px;
-	display: block;
-	position: relative;
-	object-fit: cover;
-	border-radius: 1px;
-}
-
-.bookmark-description {
-	color: rgba(55, 53, 47, 0.6);
-	font-size: 0.75em;
-	overflow: hidden;
-	max-height: 4.5em;
-	word-break: break-word;
-}
-
-.bookmark-href {
-	font-size: 0.75em;
-	margin-top: 0.25em;
-}
-
-.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
-.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
-.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
-.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
-.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
-.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
-.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
-.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
-.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
-.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
-.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
-.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
-.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
-.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
-.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
-.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
-.highlight-default {
-	color: rgba(55, 53, 47, 1);
-}
-.highlight-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.highlight-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.highlight-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.highlight-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.highlight-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.highlight-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.highlight-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.highlight-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.highlight-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.highlight-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.highlight-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.highlight-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.highlight-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.highlight-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.highlight-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.highlight-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.highlight-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.highlight-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.block-color-default {
-	color: inherit;
-	fill: inherit;
-}
-.block-color-gray {
-	color: rgba(120, 119, 116, 1);
-	fill: rgba(120, 119, 116, 1);
-}
-.block-color-brown {
-	color: rgba(159, 107, 83, 1);
-	fill: rgba(159, 107, 83, 1);
-}
-.block-color-orange {
-	color: rgba(217, 115, 13, 1);
-	fill: rgba(217, 115, 13, 1);
-}
-.block-color-yellow {
-	color: rgba(203, 145, 47, 1);
-	fill: rgba(203, 145, 47, 1);
-}
-.block-color-teal {
-	color: rgba(68, 131, 97, 1);
-	fill: rgba(68, 131, 97, 1);
-}
-.block-color-blue {
-	color: rgba(51, 126, 169, 1);
-	fill: rgba(51, 126, 169, 1);
-}
-.block-color-purple {
-	color: rgba(144, 101, 176, 1);
-	fill: rgba(144, 101, 176, 1);
-}
-.block-color-pink {
-	color: rgba(193, 76, 138, 1);
-	fill: rgba(193, 76, 138, 1);
-}
-.block-color-red {
-	color: rgba(212, 76, 71, 1);
-	fill: rgba(212, 76, 71, 1);
-}
-.block-color-gray_background {
-	background: rgba(241, 241, 239, 1);
-}
-.block-color-brown_background {
-	background: rgba(244, 238, 238, 1);
-}
-.block-color-orange_background {
-	background: rgba(251, 236, 221, 1);
-}
-.block-color-yellow_background {
-	background: rgba(251, 243, 219, 1);
-}
-.block-color-teal_background {
-	background: rgba(237, 243, 236, 1);
-}
-.block-color-blue_background {
-	background: rgba(231, 243, 248, 1);
-}
-.block-color-purple_background {
-	background: rgba(244, 240, 247, 0.8);
-}
-.block-color-pink_background {
-	background: rgba(249, 238, 243, 0.8);
-}
-.block-color-red_background {
-	background: rgba(253, 235, 236, 1);
-}
-.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
-.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
-.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
-.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
-.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
-.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
-.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
-.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
-.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
-.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
-.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
-.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
-.select-value-color-pageGlass { background-color: undefined; }
-.select-value-color-washGlass { background-color: undefined; }
-
-.checkbox {
-	display: inline-flex;
-	vertical-align: text-bottom;
-	width: 16;
-	height: 16;
-	background-size: 16px;
-	margin-left: 2px;
-	margin-right: 5px;
-}
-
-.checkbox-on {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-
-.checkbox-off {
-	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
-}
-	
-</style></head><body><article id="f0a1c938-b114-4da0-8b42-81fd456a7de2" class="page mono"><header><img class="page-cover-image" src="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/WF_Logo_Placeholder.png" style="object-position:center 50%"/><h1 class="page-title">Hanna Nyzhnia</h1><p class="page-description"></p></header><div class="page-body"><hr id="04baa9b0-2d30-49b6-b9b4-1555ba56e4fa"/><p id="a56f2391-26e4-42dc-b5a7-fe1a52374353" class="">
-</p><p id="e69261cd-f0f9-412f-a9d5-36fae658e8e4" class="">
-</p><p id="5f32bab1-7945-4f64-a590-b9ebb90a1f34" class="">
-</p><div id="a5d25270-fb3f-4dce-bf32-0c6b994e223e" class="column-list"><div id="3eaa5a4d-d283-47af-b2e0-41113de18bd1" style="width:14.621464772458712%" class="column"><p id="194478ea-57ca-430b-a1e1-2727b32843be" class="">
-</p></div><div id="677e2404-ebbe-4547-8d13-44d4523c0ce6" style="width:31.25%" class="column"><p id="33945c71-bc69-40ed-8934-dd329b39092c" class="">
-</p></div><div id="aaf05460-3aa1-46f2-a0ad-40d843ce0119" style="width:20.833333333333325%" class="column"><nav id="98aa1a3f-28d7-446c-acee-68742d79de3d" class="block-color-blue table_of_contents"><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#b83f1b01-5492-43ba-9c7b-1838829f9f1e"><em><strong>About me</strong></em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#76efa6bd-0bc1-44cc-a2c0-78edb7705183"><em><strong>Selected Work</strong></em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#d91d1ce3-6942-4e5a-a759-17a3ac0f4593"><em><strong>Personal Projects</strong></em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6bb3b77c-6e70-42e8-87be-1619c9a82017"><em><strong>Skills</strong></em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#6f2f1cda-da5c-4ec1-8a04-b5e17e4f7f58"><em><strong>Blog</strong></em></a></div><div class="table_of_contents-item table_of_contents-indent-0"><a class="table_of_contents-link" href="#4d5e1cbc-2ec9-413c-b7cf-d04600490d9f"><em><strong>Download my resume</strong></em></a></div></nav></div><div id="c0fcf4e7-d6fd-4894-b47a-4cb5e53b2efd" style="width:7.0774029918682215%" class="column"><p id="7cf80aa8-c63e-429f-b116-8d2296521a9f" class="">
-</p></div><div id="9f6ee99d-ded3-44f3-8133-36f0fb54068b" style="width:10.083768808592215%" class="column"><p id="8d74bf3f-b133-4ee0-b52b-6e75e50487e8" class="">
-</p></div><div id="0eaf90e4-5967-4a6e-9682-978b34aacbd0" style="width:16.13403009374754%" class="column"><p id="9aa70b0a-6aac-4d4b-8cdf-4f78d05d4134" class="">
-</p></div></div><p id="b6e4d4fb-234b-476f-960a-564381cea8da" class="">
-</p><p id="a08b0e21-6f26-4f53-b3c3-7eff9cc7087c" class="">
-</p><div id="4c685a16-8913-4f80-b236-ee31ef2924bb" class="column-list"><div id="961390c1-53ae-44ed-8124-6db0cfb937f0" style="width:31.25%" class="column"><p id="8af22fd9-de33-40a5-9f1a-4cd79d95fa80" class="">
-</p></div><div id="ae5cef72-53d1-4f6e-928f-965ef79f8b36" style="width:68.75%" class="column"><blockquote id="6c6e8568-c958-4691-8d8f-7886ee6b6380" class="">Cloudy with a chance of DDoS</blockquote></div></div><p id="44357226-fdde-48ef-a120-b97ba30c2e1a" class="">
-</p><hr id="796d89a1-c8e4-4660-b061-52b1e6c88155"/><p id="234db4a0-569c-4c11-81f0-3cc65866b1e2" class="">
-</p><h2 id="b83f1b01-5492-43ba-9c7b-1838829f9f1e" class=""><em><strong>About me</strong></em></h2><div id="d685c93d-5f9d-46d0-91c8-13132b3bd1ee" class="column-list"><div id="c4972f1a-a697-4ded-ab64-52bd4ce959b0" style="width:22.5%" class="column"><p id="9187cbfc-4f4e-4873-a3ae-0733c0b2d9a1" class="">
-</p></div><div id="908836c5-5504-496c-a660-e052725e70cd" style="width:15%" class="column"><p id="9e43fabf-7d08-4dab-97e9-d79d65e29608" class="">
-</p><p id="0431f468-f95f-43ec-8cde-45537ab673cc" class="">
-</p></div><div id="af7d2bbf-31f1-485d-8509-23c4722781fd" style="width:4.999999999999997%" class="column"><p id="61180d0b-f5bc-46e2-b277-bd75bad40772" class="">
-</p></div><div id="516a9a9e-f468-43a3-bd8c-f6c064e20347" style="width:15.000000000000002%" class="column"><p id="4eac756d-d86f-4f18-8a8d-7b0183f3f211" class="">
-</p></div><div id="d97b91c8-fa3e-42f5-a793-390d7019143d" style="width:42.50000000000001%" class="column"><figure id="c153f970-d7ad-4ea9-bdea-72298d4b91bb" class="image"><a href="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/3.jpeg"><img style="width:144px" src="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/3.jpeg"/></a></figure><p id="c2933bea-0c50-48b6-b95a-0c3669a2e855" class="">
-</p></div></div><p id="49ed4417-03c5-4b18-8894-9b4df2493b74" class="">
-</p><p id="8d14e83a-8579-4645-aa19-441145cb3451" class="">Dedicated cybersecurity professional with 2+ years of experience and Master of Science degree in Cybersecurity with a strong foundation in programming languages, vulnerability assessment, security audit, penetration testing and network security. Proficient in Unix systems, various programming languages.</p><p id="37cfdc25-f0c6-4a7b-af90-ad58ad7f3470" class="">
-</p><hr id="6eb1a0be-10c8-40cc-b989-8d3cc777d786"/><h2 id="76efa6bd-0bc1-44cc-a2c0-78edb7705183" class=""><em><strong>Selected Work</strong></em></h2><div id="2572de2b-0766-4a86-b717-91ea7c1fc74b" class="column-list"><div id="6e86ff58-5146-4c16-92a0-965f0bf91f31" style="width:12.5%" class="column"><ul id="b7c70318-6dce-43ca-bc54-d31020fe7975" class="bulleted-list"><li style="list-style-type:disc">KPMG</li></ul></div><div id="8aae169f-5135-4b7b-ad7c-7746445d91c2" style="width:87.5%" class="column"><figure id="f0e41300-d68d-4693-89ed-4b57ac9c5411" class="image"><a href="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/KPMG_logo.svg.png"><img style="width:48px" src="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/KPMG_logo.svg.png"/></a></figure></div></div><hr id="ee5d7b5b-8520-4410-9209-1c7b28ef0db6"/><h2 id="d91d1ce3-6942-4e5a-a759-17a3ac0f4593" class=""><em><strong>Personal Projects</strong></em></h2><p id="f200dc85-db2c-4b41-ae5f-f62958e80ba1" class="">
-</p><ul id="72c62ee3-ac4c-4df7-9d2b-bfed3f81e0b7" class="bulleted-list"><li style="list-style-type:disc"><strong>Web Pentest Lab</strong></li></ul><ul id="1b959f44-f39f-48e1-87fb-9037673c2d8b" class="bulleted-list"><li style="list-style-type:disc"><strong>Anonymous Message Board</strong></li></ul><ul id="91d77211-d3ea-4f66-8164-f8b61156a8f7" class="bulleted-list"><li style="list-style-type:disc"><strong>AI Threat Hunting Tool</strong></li></ul><ul id="19149399-2bcf-46ce-ac03-361cf601c219" class="bulleted-list"><li style="list-style-type:disc"><strong>Hacking Cheat Sheet</strong></li></ul><ul id="0224c116-494e-4db4-bba1-78d7b72cad9c" class="bulleted-list"><li style="list-style-type:disc"><strong>OSINT DB</strong></li></ul><ul id="342b9b38-f029-43d6-b26b-8463e40256bf" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital Forensics Tool</strong></li></ul><ul id="5b18855b-c303-4c27-a0ff-3b598b72efd1" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerability Scanner</strong></li></ul><hr id="04655696-4f5f-4666-843b-96aa95e0bf2d"/><h2 id="6bb3b77c-6e70-42e8-87be-1619c9a82017" class=""><em><strong>Skills</strong></em></h2><p id="d2a1d89b-9bcf-40d9-93ed-c7ff0df81b3c" class="">
-</p><p id="fdd5a136-1a74-4743-a566-5ad8af4d0475" class=""><mark class="highlight-red"><strong>Network and Cybersecurity</strong></mark><mark class="highlight-red">:</mark></p><ul id="4470c6a9-32e2-4042-bb09-7cff4173bdc6" class="bulleted-list"><li style="list-style-type:disc"><strong>Network Security</strong>: Firewall management, IDS/IPS, VPN</li></ul><ul id="8fbae8c5-188f-40a4-b0cb-d31db466888a" class="bulleted-list"><li style="list-style-type:disc"><strong>Vulnerability Assessment and Penetration Testing</strong>: Vulnerability assessment, Penetration testing</li></ul><ul id="4cac881b-9f43-41bc-aa56-cb76f5dd1fcd" class="bulleted-list"><li style="list-style-type:disc"><strong>Identity and Access Management</strong>: Identity and access management</li></ul><ul id="12e27dc4-4d54-4c3d-b4d8-6e51ae15707a" class="bulleted-list"><li style="list-style-type:disc"><strong>Cryptography</strong>: SSL/TLS, SSH</li></ul><ul id="59f96367-c2c8-41e5-ac0b-7cc47fd26f6b" class="bulleted-list"><li style="list-style-type:disc"><strong>Cloud Security</strong>: Cloud security controls</li></ul><ul id="b619aaa6-ff12-4a90-b5ef-59a3b07182b6" class="bulleted-list"><li style="list-style-type:disc"><strong>Domain Name System (DNS)</strong></li></ul><p id="ab0c721b-15e9-4dfc-8da7-33d4a80ca40e" class="">
-</p><p id="c9b7b93b-861b-4b01-8a33-2b8f3dc217a6" class=""><mark class="highlight-red"><strong>Software Development and Programming</strong></mark><mark class="highlight-red">:</mark></p><ul id="d17e73de-4d6b-4340-ab19-12492f98cddd" class="bulleted-list"><li style="list-style-type:disc"><strong>Programming Languages</strong>: JavaScript, Python, Bash, PowerShell, VB, C#, T-SQL</li></ul><ul id="2bb77c31-cba9-48e8-ab1d-1f6037716c08" class="bulleted-list"><li style="list-style-type:disc"><strong>Markup and Data Languages</strong>: JSON, HTML/CSS, XML</li></ul><p id="4ef173b2-0985-4196-b2ba-73946c736e0a" class="">
-</p><p id="62dfc8d8-b420-417f-ad60-9e1c0c2bdc83" class=""><mark class="highlight-red"><strong>DevSecOps and Cloud Platforms</strong></mark><mark class="highlight-red">:</mark></p><ul id="9706c566-e2da-457f-bd02-2d3fa3151f67" class="bulleted-list"><li style="list-style-type:disc"><strong>DevSecOps Tools</strong>: Azure DevOps</li></ul><ul id="e876ac0e-1137-4298-bf62-697704ec86b8" class="bulleted-list"><li style="list-style-type:disc"><strong>Cloud Platforms</strong>: AWS, Azure, Google Cloud Platform</li></ul><ul id="118e4141-6f9f-42c7-b54c-322e8bc54007" class="bulleted-list"><li style="list-style-type:disc"><strong>Containerization and Orchestration</strong>: Docker, Kubernetes</li></ul><p id="24f4b746-0847-4e57-8f70-d332d036c3c4" class="">
-</p><p id="64a433bd-b5ab-4e5a-b81d-1ed38b66ea1b" class=""><mark class="highlight-red"><strong>Databases</strong></mark><mark class="highlight-red">:</mark></p><ul id="9a8ab514-55a6-49ec-810f-f63af01d7bea" class="bulleted-list"><li style="list-style-type:disc"><strong>Database Management Systems</strong>: SQL, MongoDB</li></ul><p id="e532cd56-aeec-43f3-9dd8-c2951af67888" class="">
-</p><p id="16064ecc-ad32-47c3-8ee1-230861ebfab6" class=""><mark class="highlight-red"><strong>Software Applications and Tools</strong></mark><mark class="highlight-red">:</mark></p><ul id="4d839390-3c8b-4202-ad0b-cd0d62a43f28" class="bulleted-list"><li style="list-style-type:disc"><strong>Cybersecurity Tools</strong>: Burp Suite, Metasploit, Nmap, Wireshark, Splunk</li></ul><ul id="665328dd-cea2-4f97-80a9-de5bcc9ce995" class="bulleted-list"><li style="list-style-type:disc"><strong>Digital Forensics Tools</strong>: The Sleuth Kit, Autopsy, Volatility</li></ul><ul id="1cd7c804-434f-4f68-bd74-1c4e44e50c11" class="bulleted-list"><li style="list-style-type:disc"><strong>Log Management and Analysis</strong>: Logstash</li></ul><ul id="f7bed16e-5885-45f6-b8f5-fd0c50b0b163" class="bulleted-list"><li style="list-style-type:disc"><strong>Business Software</strong>: ZOHO, SAP</li></ul><ul id="235b5d7a-6963-4147-a5ce-a679903e00c6" class="bulleted-list"><li style="list-style-type:disc"><strong>Development Environments</strong>: Visual Studio</li></ul><ul id="a5529c30-4429-4b49-abbe-73bf8ee263cc" class="bulleted-list"><li style="list-style-type:disc"><strong>3D and Design Tools</strong>: Unreal Engine, Blender, AutoCAD, Revit</li></ul><p id="aac920ba-043c-4369-9f7a-271fee8a6151" class="">
-</p><p id="335dc321-19d4-493e-aede-2081e5dfbed8" class=""><mark class="highlight-red"><strong>Digital Forensics and Investigation</strong></mark><mark class="highlight-red">:</mark></p><ul id="bdfc6541-e23d-4b8f-ada9-470468a0658b" class="bulleted-list"><li style="list-style-type:disc"><strong>Forensics Tools</strong>: The Sleuth Kit, Autopsy, Volatility</li></ul><ul id="f7c3cfd0-aee6-4004-bcd6-8b6f432df3d4" class="bulleted-list"><li style="list-style-type:disc"><strong>Investigation Techniques</strong>: OSINT, Threat hunting</li></ul><ul id="21f9a2b8-7357-44e1-9b22-cbe62f05a829" class="bulleted-list"><li style="list-style-type:disc"><strong>Security Information and Event Management (SIEM)</strong>: SIEM</li></ul><p id="83b42325-5037-4b9d-ac3a-e731613cbd7f" class="">
-</p><p id="909000f4-e8ed-4803-9ca8-ac58bed0b497" class=""><mark class="highlight-red"><strong>Security Management and Compliance</strong></mark><mark class="highlight-red">:</mark></p><ul id="5ac4a91a-def9-4c33-abf1-e7e246f16e07" class="bulleted-list"><li style="list-style-type:disc"><strong>Compliance Standards</strong>: PCI DSS, HIPAA, ISO 27001, COBIT, NIST, ISO</li></ul><p id="722e26d4-54c2-4180-9831-7f4a1a80e062" class="">
-</p><p id="bb268d57-2a34-47bf-b1ee-d829b38af82e" class=""><mark class="highlight-red"><strong>Web Design and Development</strong></mark><mark class="highlight-red">:</mark></p><ul id="87198596-51bb-4c29-a8b4-8164a11afd63" class="bulleted-list"><li style="list-style-type:disc"><strong>Design Tools</strong>: Figma, Spline, Framer, Adobe Illustrator</li></ul><ul id="8d5030b8-c070-4eb4-be29-9b064ae40d60" class="bulleted-list"><li style="list-style-type:disc"><strong>Web Development Platforms</strong>: Webflow, WordPress, WIX</li></ul><ul id="69f366f5-3d1c-4542-a806-cf8df0b7fc85" class="bulleted-list"><li style="list-style-type:disc"><strong>Web Security and Performance</strong>: Cloudflare</li></ul><p id="880c164e-328a-4210-8456-b7df23732ffe" class="">
-</p><p id="b58fd9d3-f3f5-47d4-94e7-978c7b1ad85c" class=""><mark class="highlight-red"><strong>IoT and Home Server Management</strong></mark><mark class="highlight-red">:</mark></p><ul id="9591feff-6f78-42d2-9544-ba6e51cc4a3b" class="bulleted-list"><li style="list-style-type:disc"><strong>Server Management</strong>: Home server setup and management</li></ul><ul id="9cdd6376-fe55-4c4a-8038-761152e6fd40" class="bulleted-list"><li style="list-style-type:disc"><strong>IoT Security</strong>: IoT device integration and security</li></ul><p id="64d2a4cf-4d2c-466b-bb07-977b0b2d11f8" class="">
-</p><p id="2713e391-ab99-401e-9056-4aba7d336b0d" class="">
-</p><hr id="5e0b5b73-4538-4bb5-b5e3-07d9cafe0571"/><h2 id="6f2f1cda-da5c-4ec1-8a04-b5e17e4f7f58" class=""><em><strong>Blog</strong></em></h2><p id="529e521d-1753-44f2-8bd7-a77b44f476e8" class="">I like a challenge of explaining complex terms in simple language in my <mark class="highlight-red"><strong><a href="https://www.notion.so/Hanna-Nyzhnia-f0a1c938b1144da08b4281fd456a7de2?pvs=21">personal blog</a></strong></mark></p><figure id="a561384b-e798-4c1e-bc96-08c11004162d"><a href="https://blog.nyzhnia.com" class="block-color-blue_background bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Duck checkpoint</div><div class="bookmark-description">Debugging tech and cyber, one quack at a time</div></div><div class="bookmark-href">https://blog.nyzhnia.com</div></div></a></figure><hr id="a8c00872-e3a9-4a0f-b046-d0d4ffa449bb"/><h2 id="4d5e1cbc-2ec9-413c-b7cf-d04600490d9f" class=""><em><strong>Download my resume</strong></em></h2><figure id="c5b9e5f0-8b74-4688-b551-324a2a13621e"><div class="source"><a href="Hanna%20Nyzhnia%20f0a1c938b1144da08b4281fd456a7de2/Hanna_Nyzhnia_2024_resume.pdf">Hanna Nyzhnia 2024 resume.pdf</a></div></figure><hr id="b4f04513-2ec8-4bfb-8ea8-8c003c6437dd"/><p id="3872b363-2802-4155-bfb8-3025ae6ae59e" class="">
-</p><p id="a2e5821d-546e-4923-b0c6-4aa7da4488ed" class="">
-</p><div id="579148ef-ceb2-4a18-a6b3-bf0d0cc9b9cd" class="column-list"><div id="20e7b2ba-a45b-4ad2-a7de-25ad5d21e3af" style="width:75%" class="column"><p id="6870affd-12dd-478c-9f25-5edca06c01f3" class=""><mark class="highlight-red">Thank</mark> <mark class="highlight-orange">you</mark> <mark class="highlight-teal">for</mark> <mark class="highlight-blue">visiting</mark> <mark class="highlight-purple">my</mark> <mark class="highlight-pink">portfolio</mark> <mark class="highlight-brown">website</mark></p><p id="2302d457-c15b-403e-8fce-93c44e59b489" class="">
-</p><p id="35beb0a5-ecc2-4ec3-a487-b1614b379004" class="">
-</p></div><div id="c76afbe0-d4a7-4b12-87b0-ad8d012d3d0e" style="width:25%" class="column"><figure id="e6a4e546-fc34-4042-8bc0-7afb198e103d" class="image"><a href="https://smb.ibsrv.net/imageresizer/image/blog_images/1200x1200/59846/176287/0044181001582748537.jpg"><img style="width:192px" src="https://smb.ibsrv.net/imageresizer/image/blog_images/1200x1200/59846/176287/0044181001582748537.jpg"/></a></figure></div></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hanna Nyzhnia — Cybersecurity Professional</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.37/build/spline-viewer.js"></script>
+  <style>
+    :root{
+      --ink:#111;
+      --muted:#cacaca;
+      --line:#ffffff;
+      --img:#b8b8b8;
+      --bg:#118;
+
+      --pad: clamp(18px, 4vw, 56px);
+      --gap: clamp(14px, 2.2vw, 28px);
+      --gap-sm: clamp(10px, 1.6vw, 18px);
+
+      --bar-h: 18px;
+      --bar-h-sm: 14px;
+      --border: 2px solid #3a3a3a;
+      --radius: 2px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    /* Video background */
+    .video-bg{
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      transition: opacity 0.5s ease;
+      filter: brightness(0.65);
+    }
+    body{
+      margin:0;
+      background: transparent;
+      color:var(--muted);
+      font-family: 'Lato', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* ===== Spread (two "pages") ===== */
+    .spread{
+      height:100vh;
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      overflow:hidden;
+    }
+    .page{
+      padding: var(--pad);
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+
+    /* ===== Headline + long divider ===== */
+    .page__head{
+      display:flex;
+      align-items:center;
+      gap: var(--gap);
+    }
+    .kicker{
+      margin:0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 12px; /* smaller headers */
+      letter-spacing: .08em;
+      font-weight: 600;
+      color: #f5f5f0;
+    }
+    .divider{
+      height: 1px;
+      background: var(--muted);
+      width: 100%;
+    }
+    .page__head .divider{ flex:1; }
+
+    /* ===== Utility blocks ===== */
+    .img{
+      background: var(--img);
+      border: none;
+    }
+    .img--tall{ width: 180px; height: 240px; }
+    .img--square{ aspect-ratio: 1 / 1; width:100%; }
+
+    .spline-container{
+      position: relative;
+      width: 180px;
+      height: 180px;
+      border: none;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .spline-container spline-viewer{
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .bar{
+      height: var(--bar-h);
+      background: transparent;
+      border-radius: var(--radius);
+      width: var(--w, 100%);
+
+      /* show mock text inside instead of empty rectangles */
+      display:flex;
+      align-items:center;
+      padding: 0 10px;
+      color:#f5f5f0;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      overflow:hidden;
+      white-space:nowrap;
+    }
+    .bar--sm{
+      height: var(--bar-h-sm);
+      font-size: 10px;
+    }
+    .bar:empty::before{ content:"mock text"; }
+    .bar--sm:empty::before{ content:"mock"; }
+
+    .stack{
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+
+    .title{
+      margin:0;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 500;
+      color: #f5f5f0;
+      line-height: 1.05;
+    }
+    .title--xl{ font-size: clamp(20px, 2vw, 26px); } /* smaller headers */
+    .title--lg{ font-size: clamp(18px, 1.8vw, 24px); }
+    .title--md{ font-size: clamp(14px, 1.3vw, 18px); }
+    h3.title{ font-size: clamp(14px, 1.4vw, 18px); padding-bottom:8px ;}
+
+    .num{
+      display:block;
+      margin-top: 2px;
+      font-size: .9em;
+      color: #f5f5f0;
+    }
+
+    .muted-p{
+      margin: 0;
+      font-size: 12px;
+      line-height: 1.35;
+      color: #f5f5f0;
+      max-width: 44ch;
+    }
+
+    /* Rotated-text indicator (black vertical rectangle) */
+    .rotated-tag{
+      width: 22px;
+      min-height: 100%;
+      background: none;
+      color:#f5f5f0;
+      border-radius: var(--radius);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding: 6px 0;
+    }
+    .rotated-tag > span{
+      transform: rotate(90deg);
+      white-space:nowrap;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .lower-grid > .rotated-tag,
+    .upper-right > .rotated-tag{
+      writing-mode: vertical-rl;
+    }
+    .lower-grid > .rotated-tag > span,
+    .upper-right > .rotated-tag > span{
+      transform: none;
+      text-transform: none;
+    }
+    .tall-bar .tall-bar__label{
+      writing-mode: vertical-rl;
+    }
+    .tall-bar .tall-bar__label span{
+      
+      text-transform: none;
+    }
+
+    /* ===== LEFT PAGE LAYOUT ===== */
+    .left-grid{
+      display:grid;
+      grid-template-columns: 1fr 2fr; /* left column + right column(2x) */
+      gap: var(--gap);
+      align-items:stretch;
+      flex: 1;
+    }
+
+    .leftcol{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+    .leftcol > .divider:last-child{
+      margin-top: auto;
+    }
+
+    .leftcol .section,
+    .rightcol .section{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .rightcol{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+    }
+    /* .rightcol > .lower-grid{
+      margin-top: auto;
+    } */
+
+    /* upper half: two columns */
+    .upper-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap);
+      align-items:start;
+    }
+    .upper-right{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap: var(--gap-sm);
+      align-items:start;
+    }
+
+    /* lower half: big image + text + rotated bar */
+    .lower-grid{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr auto;
+      gap: var(--gap);
+      align-items:stretch;
+    }
+    .figure{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+    }
+    .lower-grid > .figure,
+    .lower-grid > .section{
+      display:flex;
+      flex-direction:column;
+    }
+
+    /* ===== RIGHT PAGE LAYOUT ===== */
+    .right-page{
+      display:flex;
+      flex-direction:column;
+      gap: var(--gap);
+
+      /* fill remaining space so last divider can sit at bottom */
+      flex: 1;
+    }
+
+    .spacer{
+      min-height: clamp(40px, 8vw, 140px); /* empty middle section like the wireframe */
+    }
+
+    /* “info” area: 9-column grid; components span 3 columns each */
+    .info-grid{
+      display:grid;
+      grid-template-columns: repeat(9, 1fr);
+      gap: var(--gap);
+      align-items:start;
+    }
+    .info-a{ grid-column: 1 / span 3; }
+    .info-b{ grid-column: 4 / span 3; }
+    .info-c{ grid-column: 7 / span 3; }
+
+    .tall-bar{
+      height: clamp(220px, 28vw, 320px);
+      width: min(140px, 100%);
+      background: transparent;
+      border-radius: var(--radius);
+      justify-self:end;
+      position: relative;
+      display:flex;
+      align-items:flex-end;
+      justify-content:center;
+    }
+    .tall-bar .tall-bar__label{
+      position:relative;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      display:flex;
+      justify-content:center;
+      pointer-events:none;
+    }
+    .tall-bar .tall-bar__label span{
+      
+      color:#f5f5f0;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+
+    /* ===== Dividers inside sections ===== */
+    .rule{ margin: 0; }
+    .rule--tight{ margin-top: 6px; }
+
+    /* bottom-align the last divider on the right page */
+    section[aria-label="Colophon page"] .right-page > .divider.rule:last-child{
+      margin-top: auto;
+    }
+
+    /* ===== Responsiveness ===== */
+    @media (max-width: 980px){
+      .spread{ grid-template-columns: 1fr; height:auto; overflow:auto; }
+    }
+
+    @media (max-width: 740px){
+      .left-grid{ grid-template-columns: 1fr; }
+      .upper-grid{ grid-template-columns: 1fr; }
+      .upper-right{ grid-template-columns: 1fr auto; }
+      .lower-grid{ grid-template-columns: 1fr auto; }
+      .lower-grid > .figure{ grid-column: 1 / -1; }
+      .lower-grid > article:first-child{ grid-column: 1 / -1; }
+
+      /* Photo and Specialty side by side */
+      .leftcol{
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: start;
+      }
+      .leftcol > .img--tall{ grid-row: 1; grid-column: 1; }
+      .leftcol > .section:first-of-type{ grid-row: 1; grid-column: 2; }
+      .leftcol > .divider:first-of-type{ grid-column: 1 / -1; }
+      .leftcol > .section:last-of-type{ grid-column: 1 / -1; justify-self: start; text-align: left; gap : 8 px; }
+      .leftcol > .divider:last-of-type{ grid-column: 1 / -1; }
+
+      .rotated-tag{
+        width: 22px;
+        min-height: 100px;
+        padding: 6px 0;
+      }
+      .rotated-tag > span{
+        font-size: 9px;
+      }
+
+      /* Cloud services styled like download resume */
+      .lower-grid > .rotated-tag{
+        min-height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        writing-mode: vertical-rl;
+      }
+      .lower-grid > .rotated-tag > span{
+        transform: none;
+        white-space: nowrap;
+      }
+
+      .info-grid{
+        grid-template-columns: 1fr 1fr auto;
+        align-items: stretch;
+      }
+      .info-a{ grid-column: 1; }
+      .info-b{ grid-column: 2; }
+      .info-c{ grid-column: 3; display: flex; align-items: stretch; }
+      .tall-bar{ width: 22px; height: auto; min-height: 100%; justify-self: end; }
+      .tall-bar .tall-bar__label{ position: static; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; }
+      .tall-bar .tall-bar__label span{  white-space: nowrap; }
+
+      .img--tall{ width: 120px; height: 160px; }
+    }
+  </style>
+</head>
+
+<body>
+  <video muted playsinline class="video-bg" id="bgVideoA" poster="video/bg-poster.jpg"></video>
+  <video muted playsinline class="video-bg" id="bgVideoB" poster="video/bg-poster.jpg" style="opacity:0;"></video>
+  <script>
+    (function() {
+      var videoA = document.getElementById('bgVideoA');
+      var videoB = document.getElementById('bgVideoB');
+      var width = window.innerWidth;
+      var size = width > 980 ? 'desktop' : width > 740 ? 'tablet' : 'mobile';
+      var canPlayWebm = videoA.canPlayType('video/webm; codecs="vp9"');
+      var ext = canPlayWebm ? 'webm' : 'mp4';
+
+      var fwdSrc = 'video/bg-' + size + '.' + ext;
+      var revSrc = 'video/bg-' + size + '-rev.' + ext;
+
+      videoA.src = fwdSrc;
+      videoB.src = revSrc;
+
+      var activeVideo = videoA;
+      var nextVideo = videoB;
+
+      function crossfade() {
+        nextVideo.currentTime = 0;
+        nextVideo.play();
+        nextVideo.style.opacity = '1';
+        activeVideo.style.opacity = '0';
+
+        var temp = activeVideo;
+        activeVideo = nextVideo;
+        nextVideo = temp;
+      }
+
+      videoA.addEventListener('ended', crossfade);
+      videoB.addEventListener('ended', crossfade);
+
+      videoA.play();
+    })();
+  </script>
+  <script>
+    const interval = setInterval(() => {
+      const viewer = document.querySelector('spline-viewer');
+      if (viewer && viewer.shadowRoot) {
+        const logo = viewer.shadowRoot.querySelector('#logo');
+        if (logo) {
+          logo.remove();
+          clearInterval(interval);
+        }
+      }
+    }, 500);
+  </script>
+  <main class="spread">
+    <!-- ================= LEFT PAGE ================= -->
+    <section class="page" aria-label="About page">
+      <header class="page__head">
+        <h1 class="kicker">HANNA NYZHNIA</h1>
+
+      </header>
+      <div class="divider"></div>
+
+      <div class="left-grid">
+        <!-- Left column -->
+        <aside class="leftcol">
+          <div class="img img--tall" role="img" aria-label="Hanna Nyzhnia" style="background-image: url('IMG_1513.jpg'); background-size: cover; background-position: center;"></div>
+
+          <div class="section">
+            <h3 class="title title--xl">
+              Specialty
+            </h3>
+            
+            <p class="muted-p">Network</p>
+            <p class="muted-p">Cloud</p>
+            
+          </div>
+
+          <div class="divider rule"></div>
+
+          <div class="section">
+            <h3 class="title title--xl">Personal Projects</h3>
+            
+            <div class="stack" aria-label="Projects list">
+              <p class="muted-p">Web Pentest Lab</p>
+              
+              <p class="muted-p">AI Threat Hunting Tool</p>
+              <p class="muted-p">Hacking Cheat Sheet</p>
+              <p class="muted-p">OSINT DB</p>
+              <p class="muted-p">Digital Forensics Tool</p>
+              <p class="muted-p">Vulnerability Scanner</p>
+            </div>
+          </div>
+          <div class="divider"></div>
+        </aside>
+
+        <!-- Right column (2x) -->
+        <div class="rightcol">
+          <!-- Upper half -->
+          <div class="upper-grid">
+            <div class="section">
+              <h3 class="title title--xl">Shh... Quiet,the machines are learning</h3>
+              <div class="divider rule"></div>
+            </div>
+
+            <div class="upper-right">
+              <div class="spline-container">
+                <spline-viewer url="https://prod.spline.design/SFbMZ2Iyc9VyYX0G/scene.splinecode"></spline-viewer>
+              </div>
+              <div class="rotated-tag" aria-label="Cybersecurity">
+                <span>サイバーセキュリティ</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="divider rule"></div>
+
+          <!-- About section -->
+          <div class="section">
+            <h3 class="title title--xl">
+              Hello,I'm Hanna
+            </h3>
+          </div>
+
+          <div class="divider rule"></div>
+
+          <!-- Lower half -->
+          <div class="lower-grid">
+            <article class="section" aria-label="About content">
+              <p class="muted-p">
+                Dedicated cybersecurity professional with 4+ years of experience and Master of Science degree in Cybersecurity.
+              </p>
+              <p class="muted-p">
+                Strong foundation in programming languages, vulnerability assessment, security audit, penetration testing and network security.
+              </p>
+            </article>
+
+            <article class="section" aria-label="About content">
+              <p class="muted-p">
+                Proficient in Unix systems and various programming languages including JavaScript, Python, Bash, PowerShell, C#, and T-SQL.
+              </p>
+              <p class="muted-p">
+                Experienced with cloud platforms (AWS, Azure, GCP), containerization (Docker, Kubernetes), and security tools (Burp Suite, Metasploit, Nmap, Wireshark, Splunk).
+              </p>
+            </article>
+
+            <div class="rotated-tag" aria-label="Cloud Services">
+              <span>クラウドサービス</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RIGHT PAGE ================= -->
+    <section class="page" aria-label="Skills page">
+      <header class="page__head">
+        <h1 class="kicker">SKILLS</h1>
+
+      </header>
+      <div class="divider"></div>
+
+      <!-- Blog section -->
+      <div class="section">
+        <h3 class="title title--xl"><a href="https://blog.nyzhnia.com" style="color: #f5f5f0; text-decoration: none;">Blog</a></h3>
+        
+        <p class="muted-p">Duck checkpoint — Debugging tech and cyber, one quack at a time</p>
+      </div>
+
+      <div class="divider rule"></div>
+
+      <!-- info section -->
+      <section class="right-page" aria-label="Skills section">
+        <div class="info-grid">
+          <!-- list A: Security Skills -->
+          <div class="info-a">
+            <div class="stack" aria-label="Security skills">
+              <p class="muted-p" style="font-weight: 600;">Network & Security</p>
+              <p class="muted-p">Firewall, IDS/IPS, VPN</p>
+              <p class="muted-p">Penetration Testing</p>
+              <p class="muted-p">Vulnerability Assessment</p>
+              <p class="muted-p">SSL/TLS, SSH</p>
+              <p class="muted-p">Cloud Security</p>
+              <p class="muted-p">SIEM, Threat Hunting</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">Compliance</p>
+              <p class="muted-p">PCI DSS, HIPAA</p>
+              <p class="muted-p">ISO 27001, NIST</p>
+            </div>
+          </div>
+
+          <!-- list B: Dev Skills -->
+          <div class="info-b">
+            <div class="stack" aria-label="Development skills">
+              <p class="muted-p" style="font-weight: 600;">Programming</p>
+              <p class="muted-p">JavaScript, Python</p>
+              <p class="muted-p">Bash, PowerShell</p>
+              <p class="muted-p">C#, T-SQL</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">DevSecOps & Cloud</p>
+              <p class="muted-p">AWS, Azure, GCP</p>
+              <p class="muted-p">Docker, Kubernetes</p>
+              <p class="muted-p" style="font-weight: 600; margin-top: 8px;">Tools</p>
+              <p class="muted-p">Burp Suite, Metasploit</p>
+              <p class="muted-p">Nmap, Wireshark, Splunk</p>
+            </div>
+          </div>
+
+          <!-- Rotated label -->
+          <div class="info-c">
+            <div class="tall-bar" >
+              <div class="tall-bar__label"><span>ネットワーク</span></div>
+            </div>
+          </div>
+        </div>
+
+        
+      </section><div class="divider rule"></div>
+    </section>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    function splitChars(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      const words = text.split(/(\s+)/);
+      words.forEach(segment => {
+        if (/^\s+$/.test(segment)) {
+          el.appendChild(document.createTextNode(' '));
+        } else {
+          const wordWrap = document.createElement('span');
+          wordWrap.className = 'word-wrap';
+          [...segment].forEach(char => {
+            const span = document.createElement('span');
+            span.className = 'split-char';
+            span.textContent = char;
+            wordWrap.appendChild(span);
+          });
+          el.appendChild(wordWrap);
+        }
+      });
+      return el.querySelectorAll('.split-char');
+    }
+
+    function splitWords(el) {
+      const text = el.textContent.trim();
+      el.innerHTML = '';
+      text.split(/\s+/).forEach((word, i, arr) => {
+        const span = document.createElement('span');
+        span.className = 'split-word';
+        span.textContent = word;
+        el.appendChild(span);
+        if (i < arr.length - 1) el.appendChild(document.createTextNode(' '));
+      });
+      return el.querySelectorAll('.split-word');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const style = document.createElement('style');
+      style.textContent = '.word-wrap { display: inline-block; white-space: nowrap; } .split-char, .split-word { display: inline-block; }';
+      document.head.appendChild(style);
+
+      document.querySelectorAll('.kicker').forEach((el, i) => {
+        const chars = splitChars(el);
+        gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power2.out', delay: 0.2 + i * 0.3 });
+      });
+
+      document.querySelectorAll('.title').forEach((el, i) => {
+        const link = el.querySelector('a');
+        if (link) {
+          const chars = splitChars(link);
+          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
+        } else {
+          const chars = splitChars(el);
+          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
+        }
+      });
+
+      document.querySelectorAll('.muted-p').forEach((el, i) => {
+        const words = splitWords(el);
+        gsap.fromTo(words, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03, ease: 'power2.out', delay: 0.6 + i * 0.04 });
+      });
+    });
+  </script>
+</body>
+</html>
