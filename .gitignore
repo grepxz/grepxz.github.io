@@ -1,2 +1,8 @@
 .DS_Store
 .claude/
+
+# Screenshots
+Screen Shot*.png
+*.screenshot.png
+720 hd.png
+photo_*.jpeg
