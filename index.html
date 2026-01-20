@@ -5,10 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hanna Nyzhnia — Cybersecurity Professional</title>
   <link rel="icon" type="image/png" href="favicon.png">
+  <!-- Preconnect for faster font loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <!-- Preload critical assets -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
+  <link rel="preload" href="IMG_1513.jpg" as="image">
+  <link rel="preload" href="video/bg-poster.jpg" as="image">
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Spline viewer (deferred) -->
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.37/build/spline-viewer.js"></script>
+  <!-- Register Service Worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => {});
+    }
+  </script>
   <style>
     :root{
       --ink:#111;
@@ -28,6 +42,18 @@
     }
 
     *{ box-sizing:border-box; }
+
+    html, body{
+      height: 100%;
+      overflow: hidden;
+    }
+
+    /* Hide text before animation - prevents flash */
+    .kicker, .title, .muted-p{
+      opacity: 0;
+    }
+    .word-wrap { display: inline-block; white-space: nowrap; }
+    .split-char, .split-word { display: inline-block; }
 
     /* Video background */
     .video-bg{
@@ -50,7 +76,8 @@
 
     /* ===== Spread (two "pages") ===== */
     .spread{
-      height:100vh;
+      width: 100vw;
+      height: 100vh;
       display:grid;
       grid-template-columns: 1fr 1fr;
       overflow:hidden;
@@ -331,11 +358,57 @@
     }
 
     /* ===== Responsiveness ===== */
-    @media (max-width: 980px){
-      .spread{ grid-template-columns: 1fr; height:auto; overflow:auto; }
+    /* Short screens (720p and similar) */
+    @media (max-height: 800px){
+      :root{
+        --pad: 12px;
+        --gap: 8px;
+        --gap-sm: 6px;
+      }
+      .stack{ gap: 4px; }
+      .muted-p{ font-size: 10px; line-height: 1.2; }
+      h3.title{ font-size: 11px; padding-bottom: 2px; }
+      .kicker{ font-size: 10px; }
+      .img--tall{ width: 100px; height: 130px; }
+      .spline-container{ width: 100px; height: 100px; }
+      .tall-bar{ height: 100px; }
+      .leftcol .section, .rightcol .section{ gap: 4px; }
+      .info-grid{ gap: 6px; }
+      .lower-grid{ gap: 8px; }
+    }
+
+    /* Tablet - iPad (1080x810 and similar) */
+    @media (max-width: 1100px){
+      :root{
+        --pad: clamp(14px, 2.5vw, 32px);
+        --gap: clamp(10px, 1.8vw, 20px);
+      }
+      .spread{ grid-template-columns: 1fr 1fr; height: 100vh; overflow: hidden; }
+      .page{
+        height: 100%;
+        max-height: 100vh;
+        overflow: hidden;
+        justify-content: flex-start;
+      }
+      .left-grid{
+        flex: 1;
+        min-height: 0;
+      }
+      .leftcol, .rightcol{
+        min-height: 0;
+        justify-content: flex-start;
+      }
+      .right-page{
+        flex: 1;
+        min-height: 0;
+      }
+      .img--tall{ width: 140px; height: 180px; }
+      .spline-container{ width: 140px; height: 140px; }
+      .tall-bar{ height: clamp(160px, 22vw, 240px); }
     }
 
     @media (max-width: 740px){
+      .spread{ grid-template-columns: 1fr; height: auto; overflow: auto; }
       .left-grid{ grid-template-columns: 1fr; }
       .upper-grid{ grid-template-columns: 1fr; }
       .upper-right{ grid-template-columns: 1fr auto; }
@@ -343,25 +416,25 @@
       .lower-grid > .figure{ grid-column: 1 / -1; }
       .lower-grid > article:first-child{ grid-column: 1 / -1; }
 
-      /* Photo and Specialty side by side */
+      /* Photo and Specialty side by side, Personal Projects below divider */
       .leftcol{
-        display: grid;
-        grid-template-columns: auto 1fr;
-        align-items: start;
+        display: flex;
+        flex-direction: column;
+        gap: var(--gap);
       }
-      .leftcol > .img--tall{ grid-row: 1; grid-column: 1; }
-      .leftcol > .section:first-of-type{ grid-row: 1; grid-column: 2; }
-      .leftcol > .divider:first-of-type{ grid-column: 1 / -1; }
-      .leftcol > .section:last-of-type{ grid-column: 1 / -1; justify-self: start; text-align: left; gap : 8 px; }
-      .leftcol > .divider:last-of-type{ grid-column: 1 / -1; }
+      .leftcol > .img--tall{ order: 1; align-self: flex-start; }
+      .leftcol > .section:first-of-type{ order: 2; }
+      .leftcol > .divider:first-of-type{ order: 3; }
+      .leftcol > .section:last-of-type{ order: 4; }
+      .leftcol > .divider:last-of-type{ order: 5; }
 
       .rotated-tag{
         width: 22px;
-        min-height: 100px;
-        padding: 6px 0;
+        min-height: 60px;
+        padding: 4px 0;
       }
       .rotated-tag > span{
-        font-size: 9px;
+        font-size: 8px;
       }
 
       /* Cloud services styled like download resume */
@@ -377,18 +450,25 @@
         white-space: nowrap;
       }
 
+      /* Skills section - make it fit */
+      .page{ padding: 12px; gap: 8px; }
+      .stack{ gap: 3px; }
+      .muted-p{ font-size: 9px; line-height: 1.2; }
+      h3.title{ font-size: 11px; padding-bottom: 4px; }
+      .kicker{ font-size: 9px; }
       .info-grid{
         grid-template-columns: 1fr 1fr auto;
         align-items: stretch;
+        gap: 6px;
       }
       .info-a{ grid-column: 1; }
       .info-b{ grid-column: 2; }
       .info-c{ grid-column: 3; display: flex; align-items: stretch; }
-      .tall-bar{ width: 22px; height: auto; min-height: 100%; justify-self: end; }
+      .tall-bar{ width: 18px; height: auto; min-height: 100%; justify-self: end; }
       .tall-bar .tall-bar__label{ position: static; display: flex; align-items: center; justify-content: center; writing-mode: vertical-rl; }
-      .tall-bar .tall-bar__label span{  white-space: nowrap; }
+      .tall-bar .tall-bar__label span{ font-size: 8px; white-space: nowrap; }
 
-      .img--tall{ width: 120px; height: 160px; }
+      .img--tall{ width: 100px; height: 130px; }
     }
   </style>
 </head>
@@ -612,65 +692,70 @@
   <script>
     function splitChars(el) {
       const text = el.textContent.trim();
-      el.innerHTML = '';
-      const words = text.split(/(\s+)/);
-      words.forEach(segment => {
+      const frag = document.createDocumentFragment();
+      text.split(/(\s+)/).forEach(segment => {
         if (/^\s+$/.test(segment)) {
-          el.appendChild(document.createTextNode(' '));
+          frag.appendChild(document.createTextNode(' '));
         } else {
           const wordWrap = document.createElement('span');
           wordWrap.className = 'word-wrap';
-          [...segment].forEach(char => {
+          for (const char of segment) {
             const span = document.createElement('span');
             span.className = 'split-char';
             span.textContent = char;
             wordWrap.appendChild(span);
-          });
-          el.appendChild(wordWrap);
+          }
+          frag.appendChild(wordWrap);
         }
       });
+      el.innerHTML = '';
+      el.appendChild(frag);
+      el.style.opacity = '1';
       return el.querySelectorAll('.split-char');
     }
 
     function splitWords(el) {
       const text = el.textContent.trim();
-      el.innerHTML = '';
+      const frag = document.createDocumentFragment();
       text.split(/\s+/).forEach((word, i, arr) => {
         const span = document.createElement('span');
         span.className = 'split-word';
         span.textContent = word;
-        el.appendChild(span);
-        if (i < arr.length - 1) el.appendChild(document.createTextNode(' '));
+        frag.appendChild(span);
+        if (i < arr.length - 1) frag.appendChild(document.createTextNode(' '));
       });
+      el.innerHTML = '';
+      el.appendChild(frag);
+      el.style.opacity = '1';
       return el.querySelectorAll('.split-word');
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      const style = document.createElement('style');
-      style.textContent = '.word-wrap { display: inline-block; white-space: nowrap; } .split-char, .split-word { display: inline-block; }';
-      document.head.appendChild(style);
+    function initAnimations() {
+      const tl = gsap.timeline();
 
       document.querySelectorAll('.kicker').forEach((el, i) => {
         const chars = splitChars(el);
-        gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power2.out', delay: 0.2 + i * 0.3 });
+        tl.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.03, ease: 'power2.out' }, i * 0.2);
       });
 
       document.querySelectorAll('.title').forEach((el, i) => {
         const link = el.querySelector('a');
-        if (link) {
-          const chars = splitChars(link);
-          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
-        } else {
-          const chars = splitChars(el);
-          gsap.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out', delay: 0.4 + i * 0.1 });
-        }
+        const target = link || el;
+        const chars = splitChars(target);
+        tl.fromTo(chars, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, stagger: 0.02, ease: 'power2.out' }, 0.3 + i * 0.08);
       });
 
       document.querySelectorAll('.muted-p').forEach((el, i) => {
         const words = splitWords(el);
-        gsap.fromTo(words, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.03, ease: 'power2.out', delay: 0.6 + i * 0.04 });
+        tl.fromTo(words, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.3, stagger: 0.02, ease: 'power2.out' }, 0.5 + i * 0.03);
       });
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => requestAnimationFrame(initAnimations));
+    } else {
+      requestAnimationFrame(initAnimations);
+    }
   </script>
 </body>
 </html>
