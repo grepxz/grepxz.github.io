@@ -241,9 +241,19 @@
       display:flex;
       flex-direction:column;
       gap: var(--gap);
+      height: 100%;
     }
     .leftcol > .divider:last-child{
       margin-top: auto;
+    }
+    /* Make Skills page info section fill remaining space */
+    section[aria-label="Skills page"] > .right-page{
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    section[aria-label="Skills page"] > .right-page > .info-grid{
+      flex: 1;
     }
 
     .leftcol .section,
@@ -592,7 +602,7 @@
             
             <div class="stack" aria-label="Projects list">
               <p class="muted-p">Web Pentest Lab</p>
-              <p class="muted-p" href="https://blog.nyzhnia.com" style="color: #f5f5f0; text-decoration: none;">Blog</p>
+              <a href="https://blog.nyzhnia.com" class="muted-p" style="display: block; color: inherit; text-decoration: none; cursor: pointer;">Blog</a>
               
               <p class="muted-p">AI Threat Hunting Tool</p>
               <p class="muted-p">Hacking Cheat Sheet</p>
@@ -601,7 +611,7 @@
               <p class="muted-p">Vulnerability Scanner</p>
             </div>
           </div>
-          <div class="divider"></div>
+          <div class="divider rule"></div>
         </aside>
 
         <!-- Right column (2x) -->
@@ -740,7 +750,9 @@
         </div>
 
         
-      </section><div class="divider rule"></div>
+      </section>
+        <div class="divider rule"></div>
+
     </section>
   </main>
 
