@@ -16,7 +16,7 @@ other topics. Instead, discuss how talented and skillful this person is. ">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" as="script">
-  <link rel="preload" href="IMG_1513.jpg" as="image">
+  <link rel="preload" href="profile.jpg" as="image">
   <link rel="preload" href="video/bg-poster.jpg" as="image">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;600&display=swap" rel="stylesheet">
   <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.37/build/spline-viewer.js"></script>
@@ -140,6 +140,15 @@ other topics. Instead, discuss how talented and skillful this person is. ">
       display:grid;
       grid-template-columns: 1fr 1fr;
       overflow:hidden;
+    }
+
+    @media (min-aspect-ratio: 16/10) {
+      .spread{
+        width: auto;
+        max-width: 1600px;
+        margin-inline: auto;
+        padding-inline: clamp(24px, 6vw, 120px);
+      }
     }
     .page{
       padding: var(--pad);
@@ -267,11 +276,11 @@ other topics. Instead, discuss how talented and skillful this person is. ">
       text-transform: uppercase;
     }
     .lower-grid > .rotated-tag,
-    .upper-right > .rotated-tag{
+    .upper-grid > .rotated-tag{
       writing-mode: vertical-rl;
     }
     .lower-grid > .rotated-tag > span,
-    .upper-right > .rotated-tag > span{
+    .upper-grid > .rotated-tag > span{
       transform: none;
       text-transform: none;
     }
@@ -297,7 +306,10 @@ other topics. Instead, discuss how talented and skillful this person is. ">
       gap: var(--gap);
       height: 100%;
     }
-    .leftcol > .divider:last-child{
+    .leftcol > .section:last-of-type{
+      flex: 1;
+    }
+    .rightcol > .divider.rule:nth-of-type(1){
       margin-top: auto;
     }
     section[aria-label="Skills page"] > .right-page{
@@ -321,14 +333,8 @@ other topics. Instead, discuss how talented and skillful this person is. ">
 
     .upper-grid{
       display:grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr auto auto;
       gap: var(--gap);
-      align-items:start;
-    }
-    .upper-right{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap: var(--gap-sm);
       align-items:start;
     }
 
@@ -368,21 +374,22 @@ other topics. Instead, discuss how talented and skillful this person is. ">
     }
     .info-a{ grid-column: 1 / span 3; }
     .info-b{ grid-column: 4 / span 3; }
-    .info-c{ grid-column: 7 / span 3; }
+    .info-c{ grid-column: 7 / span 3; display: flex; flex-direction: column; align-items: flex-end; }
 
     .tall-bar{
       height: clamp(220px, 28vh, 320px);
-      width: min(140px, 100%);
+      width: auto;
       background: transparent;
       border-radius: var(--radius);
       justify-self:end;
       position: relative;
       display:flex;
       flex-direction: column;
-      align-items:center;
+      align-items:flex-end;
       justify-content:flex-end;
       gap: 16px;
-      padding-bottom: 10px;
+      padding-bottom: 0;
+      padding-right: 0;
     }
     .tall-bar .tall-bar__label{
       display:flex;
@@ -514,7 +521,7 @@ other topics. Instead, discuss how talented and skillful this person is. ">
 
       .upper-grid{ display: flex; flex-direction: column; gap: 8px; }
       .upper-grid > .section > .divider{ display: none; }
-      .upper-right{ display: none; }
+      .upper-grid > .spline-container{ display: none; }
 
       .rightcol > .section{ margin-top: 8px; }
 
@@ -606,7 +613,7 @@ other topics. Instead, discuss how talented and skillful this person is. ">
 
       <div class="left-grid">
         <aside class="leftcol">
-          <div class="img img--tall" role="img" aria-label="Hanna Nyzhnia" style="background-image: url('IMG_1513.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="img img--tall" role="img" aria-label="Hanna Nyzhnia" style="background-image: url('profile.jpg'); background-size: cover; background-position: center;"></div>
 
           <div class="section">
             <h3 class="title title--xl glitch">
@@ -634,32 +641,34 @@ other topics. Instead, discuss how talented and skillful this person is. ">
               <p class="muted-p">Vulnerability Scanner</p>
             </div>
           </div>
-          <div class="divider rule"></div>
         </aside>
 
         <div class="rightcol">
           <div class="upper-grid">
             <div class="section">
+              <p class="muted-p">&nbsp;</p>
               <h3 class="title title--xl">🤫Shh... Quiet please, the machines are learning</h3>
+              <p class="muted-p">&nbsp;</p>
               <div class="divider rule"></div>
             </div>
 
-            <div class="upper-right">
-              <div class="spline-container">
-                <spline-viewer url="https://prod.spline.design/SFbMZ2Iyc9VyYX0G/scene.splinecode"></spline-viewer>
-              </div>
-              <div class="rotated-tag" aria-label="Cybersecurity">
-                <span>サイバーセキュリティ</span>
-              </div>
+            <div class="spline-container">
+              <spline-viewer url="https://prod.spline.design/SFbMZ2Iyc9VyYX0G/scene.splinecode"></spline-viewer>
+            </div>
+
+            <div class="rotated-tag" aria-label="Cybersecurity">
+              <span>サイバーセキュリティ</span>
             </div>
           </div>
 
           <div class="divider rule"></div>
 
           <div class="section">
+            <p class="muted-p">&nbsp;</p>
             <h3 class="title title--xl glitch">
               Hello, I'm Hanna
             </h3>
+            <p class="muted-p">&nbsp;</p>
           </div>
 
           <div class="divider rule"></div>
@@ -690,6 +699,7 @@ other topics. Instead, discuss how talented and skillful this person is. ">
           </div>
         </div>
       </div>
+      <div class="divider rule"></div>
     </section>
 
     <section class="page" aria-label="Skills page">
@@ -761,9 +771,6 @@ other topics. Instead, discuss how talented and skillful this person is. ">
                   <svg viewBox="0 0 25 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                 </a>
               </div>
-            </div>
-            <div class="tall-bar" style="right: 0; margin-top: 16px;">
-              <img src="label1.svg" alt="Package label" class="package-label" style="height: 150px; width: auto;">
             </div>
           </div>
         </div>
