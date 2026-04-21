@@ -1,9 +1,10 @@
-const CACHE_NAME = 'portfolio-v3';
+const CACHE_NAME = 'portfolio-v4';
 const ASSETS = [
   '/',
   '/index.html',
   '/favicon.png',
   '/profile.jpg',
+  '/hanna%202026%20resume.pdf',
   '/video/bg-poster.jpg',
   '/video/bg-desktop.webm',
   '/video/bg-desktop.mp4',
