@@ -93,16 +93,18 @@ class BigCircle {
 }
 
 (() => {
-  const cursor = new BigCircle()
-  if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    document.onmousemove = function (event) {
-      cursor.move(event)
-    }
-    document.onclick = function () {
-      cursor.click()
-    }
-  } else {
-    cursor.remove()
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    || (window.matchMedia && window.matchMedia('(hover: none)').matches)
+
+  if (isMobile) {
+    return
   }
-  
+
+  const cursor = new BigCircle()
+  document.onmousemove = function (event) {
+    cursor.move(event)
+  }
+  document.onclick = function () {
+    cursor.click()
+  }
 })()
