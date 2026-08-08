@@ -719,6 +719,25 @@ sup.cn {
 	font-size: 70%;
 }
 
+/* Mock-button demolition */
+.debris {
+	position: fixed;
+	z-index: 9999;
+	pointer-events: none;
+	border-radius: 1px;
+}
+a.exploded,
+a.exploded:hover,
+#simpleSearch.exploded {
+	color: #72777d !important;
+	opacity: 0.55;
+	pointer-events: none;
+	text-decoration: none;
+}
+#simpleSearch.exploded input {
+	pointer-events: none;
+}
+
 /* Infobox (person) */
 .articleRight.infobox { width: 22em; max-width: 100%; }
 .infobox-title {
