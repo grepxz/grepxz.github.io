@@ -1,0 +1,14 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# AUTHOR
+
+    Hanna Nyzhnia -- Cybersecurity professional
+    Site: https://nyzhnia.com
+    GitHub: https://github.com/grepxz
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3
+    Vanilla JavaScript (no frameworks)
+    Spline (3D viewer)

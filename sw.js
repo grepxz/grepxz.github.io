@@ -1,51 +1,20 @@
-const CACHE_NAME = 'portfolio-v4';
-const ASSETS = [
-  '/',
-  '/index.html',
-  '/favicon.png',
-  '/profile.jpg',
-  '/hanna%202026%20resume.pdf',
-  '/video/bg-poster.jpg',
-  '/video/bg-desktop.webm',
-  '/video/bg-desktop.mp4',
-  '/video/bg-tablet.webm',
-  '/video/bg-tablet.mp4',
-  '/video/bg-mobile.webm',
-  '/video/bg-mobile.mp4',
-  'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js',
-  'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;600&display=swap'
-];
-
-// Install - cache assets
-self.addEventListener('install', e => {
-  e.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
-      .then(() => self.skipWaiting())
-  );
+// Kill-switch service worker.
+// The previous site registered a cache-first worker ('portfolio-v4'); the new
+// site is served without one. This build wipes all caches, unregisters itself,
+// and reloads any open clients so returning visitors get the live site.
+self.addEventListener('install', function () {
+  self.skipWaiting();
 });
-
-// Activate - clean old caches
-self.addEventListener('activate', e => {
+self.addEventListener('activate', function (e) {
   e.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
-    ).then(() => self.clients.claim())
-  );
-});
-
-// Fetch - cache first, then network
-self.addEventListener('fetch', e => {
-  e.respondWith(
-    caches.match(e.request).then(cached => {
-      const fetched = fetch(e.request).then(response => {
-        if (response.ok) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
-        }
-        return response;
-      }).catch(() => cached);
-      return cached || fetched;
-    })
+    caches.keys()
+      .then(function (keys) {
+        return Promise.all(keys.map(function (k) { return caches.delete(k); }));
+      })
+      .then(function () { return self.registration.unregister(); })
+      .then(function () { return self.clients.matchAll({ type: 'window' }); })
+      .then(function (clients) {
+        clients.forEach(function (client) { client.navigate(client.url); });
+      })
   );
 });
