@@ -44,6 +44,38 @@
         window.matchMedia('(prefers-reduced-motion: reduce)').matches) ||
         !('animate' in Element.prototype);
 
+    // Pixel explosion sprite (Metal Slug sticker, tenor.com/view/26977487 — self-hosted).
+    var GIF_SRC = 'img/explosion.gif';
+    var GIF_MS = 1650; // one play; the file loops at ~1.7s
+    var gifBlob = null;
+    if (!reduceMotion && window.fetch) {
+        fetch(GIF_SRC)
+            .then(function (r) { return r.ok ? r.blob() : null; })
+            .then(function (b) { gifBlob = b; })
+            .catch(function () {});
+    }
+
+    function kaboom(x, y) {
+        var img = document.createElement('img');
+        img.className = 'kaboom';
+        img.alt = '';
+        var url = null;
+        if (gifBlob && window.URL && URL.createObjectURL) {
+            // Fresh object URL per click: replays from frame 0, no refetch.
+            url = URL.createObjectURL(gifBlob);
+            img.src = url;
+        } else {
+            img.src = GIF_SRC + '?b=' + Date.now();
+        }
+        img.style.left = x + 'px';
+        img.style.top = y + 'px';
+        document.body.appendChild(img);
+        setTimeout(function () {
+            img.remove();
+            if (url) URL.revokeObjectURL(url);
+        }, GIF_MS);
+    }
+
     function explode(x, y) {
         for (var i = 0; i < 14; i++) {
             var p = document.createElement('span');
@@ -87,6 +119,7 @@
         var y = e.clientY || rect.top + rect.height / 2;
 
         if (!reduceMotion) {
+            kaboom(x, y);
             explode(x, y);
             victim.animate([
                 { transform: 'scale(1)' },

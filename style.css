@@ -720,6 +720,15 @@ sup.cn {
 }
 
 /* Mock-button demolition */
+.kaboom {
+	position: fixed;
+	z-index: 10000;
+	width: 110px;
+	height: auto;
+	transform: translate(-50%, -55%);
+	pointer-events: none;
+	image-rendering: pixelated;
+}
 .debris {
 	position: fixed;
 	z-index: 9999;
